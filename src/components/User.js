@@ -13,85 +13,58 @@ import Link from "@material-ui/core/Link";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    maxWidth: "100%",
     display: "flex",
     justifyContent: "center",
+    width: "100%",
   },
-  maingrid: {
-    maxWidth: "700px",
+  container: {
+    maxWidth: 700,
   },
-
+  grid: {
+    border: "1 red",
+  },
   paper: {
     padding: theme.spacing(2),
-
-    margin: "auto",
-    maxWidth: "80%",
-  },
-  image: {
-    width: 50,
-    height: 50,
-  },
-  img: {
-    margin: "auto",
-    display: "block",
-    maxWidth: "100%",
-    maxHeight: "100%",
+    textAlign: "center",
+    color: theme.palette.text.secondary,
   },
 }));
 
-export default function ComplexGrid() {
+export default function FullWidthGrid() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={1} className={classes.maingrid}>
-        <Grid item>
-          <ButtonBase className={classes.image}>
-            <Avatar alt="Remy Sharp" src="../images/avatar/1.png" />
-          </ButtonBase>
+      <Grid
+        container
+        spacing={3}
+        justify="center"
+        className={classes.container}
+      >
+        {" "}
+        <Grid item xs={2} md={2} className={classes.grid}>
+          <Avatar alt="Remy Sharp" src="../images/avatar/1.png" />
         </Grid>
-        <Grid item xs md container>
-          <Grid
-            item
-            xs={12}
-            md={12}
-            sm={12}
-            container
-            direction="column"
-            spacing={2}
-          >
-            <Grid item xs={12} md={12}>
-              <Breadcrumbs aria-label="breadcrumb" variant="h6">
-                <Link color="inherit" href="/">
-                  <Typography gutterBottom variant="h6">
-                    John Doe <Chip color="primary" size="small" label="Pro" />
-                  </Typography>
-                </Link>
-                <Typography gutterBottom variant="h6">
-                  <Link color="inherit" href="/">
-                    Core
-                  </Link>
-                </Typography>
-              </Breadcrumbs>
-              <Typography variant="body2" gutterBottom>
-                Set up your VoidChurch presence
+        <Grid item xs={10} md={6}>
+          <Breadcrumbs aria-label="breadcrumb" variant="h6">
+            <Link color="inherit" href="/">
+              <Typography gutterBottom variant="h6">
+                John Doe <Chip color="primary" size="small" label="Pro" />
               </Typography>
-            </Grid>
-          </Grid>
+            </Link>
+            <Typography gutterBottom variant="h6">
+              <Link color="inherit" href="/">
+                Core
+              </Link>
+            </Typography>
+          </Breadcrumbs>
         </Grid>
-        <Grid item xs={12} sm={12} md container className={classes.paper}>
-          <Grid item md={12} xs={12}>
-            <ProgressBar />
+        <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={12}>
+            <Paper className={classes.paper}>xs=12 md=6</Paper>
           </Grid>
-          <Grid item md xs>
-            <Typography variant="caption">
-              Minutes used this billing cycle
-            </Typography>
-          </Grid>
-          <Grid item md={2} xs={12}>
-            <Typography variant="caption" align="right">
-              50/100
-            </Typography>
+          <Grid item xs={12} md={12}>
+            <Paper className={classes.paper}>xs=12 md=6</Paper>
           </Grid>
         </Grid>
       </Grid>
